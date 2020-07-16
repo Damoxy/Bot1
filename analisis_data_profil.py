@@ -21,15 +21,16 @@ def preprocess(df):
     now = pd.Timestamp('now')
     df['age_in_days'] = (now - df['Created_at']).dt.days
     #Number of tweets/age
-    df['Ratio Statuses_count/age']=(df['Statuses_count']/df['age_in_days']).round(3)
+    df['Ratio Statuses_count/age']=(df['Statuses_count']/df['age_in_days'] ) .round(3) 
     #Number of favourites/age
-    df['Ratio Favorites/age']=(df['Favorites_count']/df['age_in_days']).round(3)
+    df['Ratio Favorites/age']=(df['Favorites_count']/df['age_in_days'] ).round(3)
     #Ratio friends/follower
     df['Ratio Friends/Followers']=(df['Friends_count']/df['Followers_count']).round(3)
     #Count length of bio
     df['Length_of_Bio']=df['Description'].astype(str).str.len()
     #Measure reputation
-    df['Reputation']= df['Followers_count']/(df['Followers_count']+ df['Friends_count'])
+    #df['Reputation']= df['Followers_count']/(df['Followers_count']+ df['Friends_count'])
+    df['Reputation']= df['Followers_count']
     df1=df.drop(['Geo_enabled','id_str','Created_at'], axis=1)
     df1['URL'] = pd.notnull(df1["URL"]) 
     df1['Location']=pd.notnull(df1['Location'])
