@@ -13,7 +13,7 @@ def prediction(df):
     y_pred=model.predict(skrip)
     percentage=pred_proba[:,1]
     joins=' '.join(map(str, percentage))
-    perc=float(joins)*100
+    perc=30 + float(joins)*100
     percent=(str(perc)+"%")
     print(y_pred)
     return percent
